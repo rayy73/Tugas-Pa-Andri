@@ -2,44 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use app\Models\Users;
+use App\Models\User; // default model Laravel
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    public function index(){
-        return view('sesi/index');
+    public function index()
+    {
+        return view('sesi.index'); // pakai titik lebih direkomendasikan
     }
-    public function login (Request $request){
-        Session::flash('email',$request->email);
 
+    public function login(Request $request)
+    {
+        Session::flash('email', $request->email);
 
-        $request->validate ([
-        'email' => 'required',
-        'password' => 'required',   
-        ]);
-        [
-            'email'=>'Email Wajib Disi',
-            'password'=> 'Password Wajib Disi',
-        ];
-        
+        $request->validate(
+            [
+                'email' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'email' => 'Email wajib diisi',
+                'password' => 'Password wajib diisi',
+            ]
+        );
+
         $infologin = [
-           'email' =>$request->email,
-           'password' =>$request->password,
+            'email' => $request->email,
+            'password' => $request->password,
         ];
+
         if (Auth::attempt($infologin)) {
-            return redirect('departemen')->with('success','Berhasil Login');
+            // ✅ sukses login
+            return redirect()->route('departemen.index')->with('success', 'Berhasil Login');
+            // kalau mau langsung ke dashboard ganti jadi:
+            // return redirect()->route('dashboard')->with('success','Berhasil Login');
         } else {
-            return redirect('sesi')->with('success','Username dan Password Yang Dimaksudkan Tidak Valid');
+            // ❌ gagal login
+            return redirect()->route('login')->with('error', 'Username atau Password Salah');
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect('sesi')->with('success','Berhasil Logout');
+        return redirect()->route('login')->with('success', 'Berhasil Logout');
     }
 }
