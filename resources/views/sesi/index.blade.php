@@ -34,7 +34,7 @@
                                     </div>
 
                                     <!-- Login Form -->
-                                    <form class="user" action="{{ url('/login') }}" method="POST">
+                                    <form class="user" action="/sesi/login" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" name="email"

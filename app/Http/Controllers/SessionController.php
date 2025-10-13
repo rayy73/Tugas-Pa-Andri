@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User; // default model Laravel
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
     public function index()
     {
-        return view('sesi.index'); // pakai titik lebih direkomendasikan
+        return view('sesi/index'); // pakai titik lebih direkomendasikan
     }
 
     public function login(Request $request)
