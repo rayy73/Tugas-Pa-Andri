@@ -11,10 +11,9 @@ class Karyawan extends Model
     protected $table = 'karyawan';
     protected $fillable = [
         'nip',
-        'nama karyawan',
-        'gaji karyawan',
+        'nama_karyawan',
+        'gaji_karyawan',
         'alamat',
-        'jenis kelamin',
-        'departemen_id'
+        'jenis_kelamin',
     ];
 }

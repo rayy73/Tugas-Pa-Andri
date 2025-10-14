@@ -59,10 +59,10 @@
                                             <td>{{ $karyawan->jenis_kelamin }}</td>
                                             <td>
                                                 {{-- Tombol Edit --}}
-                                                <a class="btn btn-sm btn-primary" href="{{ route('karyawan.edit', $item->nip) }}">Edit</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('karyawan.edit', $karyawan->nip) }}">Edit</a>
 
                                                 {{-- Tombol Delete --}}
-                                                <form action="{{ url('karyawan/'.$karyawan->nip') }}" 
+                                                <form action="{{ url('karyawan/'. $karyawan->nip) }}" 
                                                       method="POST" 
                                                       style="display:inline-block;"
                                                       onsubmit="return confirm('Apakah anda ingin menghapus data ?')">
