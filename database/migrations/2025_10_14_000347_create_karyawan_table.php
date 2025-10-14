@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('karyawan', function (Blueprint $table) {
             $table->id();
+            $table->integer('nip');
+            $table->string('nama karyawan');
+            $table->integer('gaji karyawan');
+            $table->text('alamat');
+            $table->enum('jenis kelamin', ['Pria', 'Wanita']);
+            $table->integer('departemen_id');
             $table->timestamps();
         });
     }

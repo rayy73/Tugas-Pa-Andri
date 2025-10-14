@@ -25,7 +25,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data DepartemenS</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Data Karyawan</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -33,28 +33,36 @@
                             <h6 class="m-0 font-weight-bold text-primary">Sisfo Pegawai</h6>
                         </div>
                         <div class="card-body">
-                            <a class="btn btn-primary mb-3" href="{{ route('departemen.create') }}">Tambah Data</a>
+                            <a class="btn btn-primary mb-3" href="{{ route('karyawan.create') }}">Tambah Data</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Departemen</th>
-                                            <th>Aksi</th>
+                                            <th>Nip</th>
+                                            <th>Nama Karyawan</th>
+                                            <th>Gaji Karyawan</th>
+                                            <th>Alamat</th>
+                                            <th>Jenis Kelamin</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php $no = 1; @endphp
-                                        @foreach($departemen as $item)
+                                        @foreach($karyawan as $karyawan)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $item->nama_departemen }}</td>
+                                            <td>{{ $karyawan->nip }}</td>
+                                            <td>{{ $karyawan->nama_karyawan }}</td>
+                                            <td>{{ $karyawan->gaji_karyawan }}</td>
+                                            <td>{{ $karyawan->alamat }}</td>
+                                            <td>{{ $karyawan->jenis_kelamin }}</td>
                                             <td>
                                                 {{-- Tombol Edit --}}
-                                                <a class="btn btn-sm btn-primary" href="{{ route('departemen.edit', $item->kodedepartemen) }}">Edit</a>
+                                                <a class="btn btn-sm btn-primary" href="{{ route('karyawan.edit', $item->nip) }}">Edit</a>
 
                                                 {{-- Tombol Delete --}}
-                                                <form action="{{ route('departemen.destroy', $item->kodedepartemen) }}" 
+                                                <form action="{{ url('karyawan/'.$karyawan->nip') }}" 
                                                       method="POST" 
                                                       style="display:inline-block;"
                                                       onsubmit="return confirm('Apakah anda ingin menghapus data ?')">
